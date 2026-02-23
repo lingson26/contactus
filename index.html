@@ -5,14 +5,14 @@
   </div>
 
   <form id="leadLiteForm" class="form">
-    <!-- 문의 주제 -->
+    <!-- 문의 구분 -->
     <div class="field">
       <div class="fieldHead">
-        <label class="label">문의 주제 <span class="req">*</span></label>
-        <div class="hint">문의 주제를 선택하세요</div>
+        <label class="label">문의 구분 <span class="req">*</span></label>
+        <div class="hint">문의 구분을 선택하세요</div>
       </div>
 
-      <div class="chipGroup" role="group" aria-label="문의 주제 선택">
+      <div class="chipGroup" role="group" aria-label="문의 구분 선택">
         <label class="chipCheck">
           <input type="checkbox" name="topic" value="커뮤니티 시설 운영" />
           <span>커뮤니티 시설 운영</span>
@@ -60,15 +60,17 @@
  <div class="consent-wrap"> 
 <div class="consent-main"> 
 
-<b>[필수]</b> 개인정보 수집 및 이용에 동의합니다. <em>상담 외 다른 목적으로 사용되지 않아요.</em> </div> 
+<b>[필수]</b> 개인정보 수집 및 이용에 동의합니다.
+<em>상담 외 다른 목적으로 사용되지 않아요.</em>
 
-<div class="consent-detail" id="consentDetail"> <ul> 
-
-<li><b>수집 목적</b> : 본인 확인, 도입 상담/문의, 제품소개 요청 처리</li> 
-<li><b>수집 항목</b> : 연락처 / 아파트 단지정보</li>
- <li><b>수집 근거</b> : 정보 주체의 동의</li>
- <li><b>보유 기간</b> : 상담 완료 시 즉시 파기</li> 
-</ul> 
+<div class="consent-detail" id="consentDetail">
+  <ul>
+    <li><b>수집 목적</b> : 본인 확인, 도입 상담/문의, 제품소개 요청 처리</li>
+    <li><b>수집 항목</b> : 연락처 / 아파트 단지정보</li>
+    <li><b>수집 근거</b> : 정보 주체의 동의</li>
+    <li><b>보유 기간</b> : 상담 완료 시 즉시 파기</li>
+  </ul>
+</div>
 </div> </div> </label>
 
     <button type="submit" class="submit" id="submitBtn" disabled>컨설팅 신청하기</button>
@@ -339,4 +341,5 @@
   // init
   syncChipActive();
   validateAndToggle();
+
 </script>
