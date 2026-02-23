@@ -1,18 +1,18 @@
 <section class="card" aria-label="도입 문의 폼">
   <div class="cardTop">
-    <h2>컨설팅 문의</h2>
+    <h2>컨설팅 상담</h2>
     <p>필수 항목만 입력하면 운영 전문 담당자가 영업일기준 1일이내 연락드려요.</p>
   </div>
 
   <form id="leadLiteForm" class="form">
-    <!-- 문의 구분 -->
+    <!-- 문의 주제 -->
     <div class="field">
       <div class="fieldHead">
-        <label class="label">문의 구분 <span class="req">*</span></label>
-        <div class="hint">문의 구분을 선택하세요</div>
+        <label class="label">문의 주제 <span class="req">*</span></label>
+        <div class="hint">문의 주제를 선택하세요</div>
       </div>
 
-      <div class="chipGroup" role="group" aria-label="문의 구분 선택">
+      <div class="chipGroup" role="group" aria-label="문의 주제 선택">
         <label class="chipCheck">
           <input type="checkbox" name="topic" value="커뮤니티 시설 운영" />
           <span>커뮤니티 시설 운영</span>
@@ -42,7 +42,6 @@
              placeholder="010-1234-5678" required />
       <div class="error" id="contactError" aria-live="polite"></div>
     </div>
-   <!-- 아파트 단지 정보 --> <div class="field"> <div class="fieldHead"> <label class="label" for="message">아파트 단지 정보</label> <div class="hint">아파트명/ 관리사무소 명을 기재해주세요</div> </div> <textarea id="message" name="message" rows="1" placeholder="예) oo아파트 관리사무소 / oo아파트 입대의회장"></textarea> </div>
 
     <!-- 문의사항 -->
     <div class="field">
@@ -54,26 +53,24 @@
                 placeholder="예) 800세대, OO아파트 / 커뮤니티 예약(골프연습장) 운영 방식 상담 원합니다."></textarea>
     </div>
 
-    <!-- 동의 -->
-    <label class="consent">
-  <input type="checkbox" id="consent" required />
+<!-- 동의 --> 
+<label class="consent"> 
+<input type="checkbox" id="consent" required />
 
-  <div class="consent-wrap">
-    <div class="consent-main">
-      <b>[필수]</b> 개인정보 수집 및 이용에 동의합니다.
-      <em>상담 외 다른 목적으로 사용되지 않아요.</em>
-    </div>
+ <div class="consent-wrap"> 
+<div class="consent-main"> 
 
-    <div class="consent-detail">
-      <ul>
-        <li><b>수집 목적</b> : 본인 확인, 도입 상담/문의, 제품소개 요청 처리</li>
-        <li><b>수집 항목</b> : 연락처 / 아파트 단지정보</li>
-        <li><b>수집 근거</b> : 정보 주체의 동의</li>
-        <li><b>보유 기간</b> : 상담 완료 시 즉시 파기</li>
-      </ul>
-    </div>
-  </div>
-</label>
+<b>[필수]</b> 개인정보 수집 및 이용에 동의합니다. <em>상담 외 다른 목적으로 사용되지 않아요.</em> </div> 
+
+<div class="consent-detail" id="consentDetail"> <ul> 
+
+<li><b>수집 목적</b> : 본인 확인, 도입 상담/문의, 제품소개 요청 처리</li> 
+<li><b>수집 항목</b> : 연락처 / 아파트 단지정보</li>
+ <li><b>수집 근거</b> : 정보 주체의 동의</li>
+ <li><b>보유 기간</b> : 상담 완료 시 즉시 파기</li> 
+</ul> 
+</div> </div> </label>
+
     <button type="submit" class="submit" id="submitBtn" disabled>컨설팅 신청하기</button>
   </form>
 </section>
@@ -98,7 +95,7 @@
     padding: 26px;
   }
 
-  .cardTop h2{ margin:0; font-size:27px; letter-spacing:-0.3px; }
+  .cardTop h2{ margin:0; font-size:18px; letter-spacing:-0.3px; }
   .cardTop p{ margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.5; }
 
   .form{ margin-top: 14px; }
@@ -112,13 +109,13 @@
     margin-bottom: 8px;
   }
   .label{
-    font-size: 20px;
+    font-size: 12px;
     color: var(--muted);
     font-weight: 900;
     letter-spacing: -0.1px;
   }
   .hint{
-    font-size: 17px;
+    font-size: 12px;
     color: #94a3b8;
     font-weight: 700;
     text-align: right;
@@ -222,12 +219,12 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script>
-  //   const EMAILJS_PUBLIC_KEY = "jyrL0ikUigwhOgnSu";
+  // ✅ 1) 여기 3개만 너 값으로 바꿔줘
+  const EMAILJS_PUBLIC_KEY = "jyrL0ikUigwhOgnSu";
   const EMAILJS_SERVICE_ID = "service_7eg3e18";
   const EMAILJS_TEMPLATE_ID = "template_wjlukpk";
 
   emailjs.init(EMAILJS_PUBLIC_KEY);
-
   const form = document.getElementById("leadLiteForm");
   const submitBtn = document.getElementById("submitBtn");
   const consent = document.getElementById("consent");
@@ -264,7 +261,7 @@
 
   function validateTopics(){
     const anyChecked = topicInputs.some(i => i.checked);
-    topicError.textContent = anyChecked ? "" : "문의 유형을 1개 이상 선택해 주세요.";
+    topicError.textContent = anyChecked ? "" : "문의 주제를 1개 이상 선택해 주세요.";
     return anyChecked;
   }
 
@@ -324,7 +321,7 @@
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
 
-      alert("도입 문의가 접수되었습니다! 운영 전문 담당자가 영업일기준 1일이내 연락드릴게요 😊");
+      alert("도입 문의가 접수되었습니다! 담당자가 빠르게 연락드릴게요 😊");
       form.reset();
       syncChipActive();
       validateAndToggle();
