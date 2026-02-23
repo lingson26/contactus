@@ -1,0 +1,345 @@
+<section class="card" aria-label="도입 문의 폼">
+  <div class="cardTop">
+    <h2>컨설팅 문의</h2>
+    <p>필수 항목만 입력하면 운영 전문 담당자가 영업일기준 1일이내 연락드려요.</p>
+  </div>
+
+  <form id="leadLiteForm" class="form">
+    <!-- 문의 구분 -->
+    <div class="field">
+      <div class="fieldHead">
+        <label class="label">문의 구분 <span class="req">*</span></label>
+        <div class="hint">문의 구분을 선택하세요</div>
+      </div>
+
+      <div class="chipGroup" role="group" aria-label="문의 구분 선택">
+        <label class="chipCheck">
+          <input type="checkbox" name="topic" value="커뮤니티 시설 운영" />
+          <span>커뮤니티 시설 운영</span>
+        </label>
+
+        <label class="chipCheck">
+          <input type="checkbox" name="topic" value="커뮤니티 시설 공사" />
+          <span>커뮤니티 시설 공사</span>
+        </label>
+
+        <label class="chipCheck">
+          <input type="checkbox" name="topic" value="기타" />
+          <span>기타</span>
+        </label>
+      </div>
+
+      <div class="error" id="topicError" aria-live="polite"></div>
+    </div>
+
+    <!-- 연락처 -->
+    <div class="field">
+      <div class="fieldHead">
+        <label class="label" for="contact">연락처 <span class="req">*</span></label>
+        <div class="hint">연락 받으실 연락처를 입력해 주세요.</div>
+      </div>
+      <input id="contact" name="contact" type="tel" inputmode="tel"
+             placeholder="010-1234-5678" required />
+      <div class="error" id="contactError" aria-live="polite"></div>
+    </div>
+   <!-- 아파트 단지 정보 --> <div class="field"> <div class="fieldHead"> <label class="label" for="message">아파트 단지 정보</label> <div class="hint">아파트명/ 관리사무소 명을 기재해주세요</div> </div> <textarea id="message" name="message" rows="1" placeholder="예) oo아파트 관리사무소 / oo아파트 입대의회장"></textarea> </div>
+
+    <!-- 문의사항 -->
+    <div class="field">
+      <div class="fieldHead">
+        <label class="label" for="message">문의사항</label>
+        <div class="hint">세대수/단지명/문의사항을 남겨주세요</div>
+      </div>
+      <textarea id="message" name="message" rows="7"
+                placeholder="예) 800세대, OO아파트 / 커뮤니티 예약(골프연습장) 운영 방식 상담 원합니다."></textarea>
+    </div>
+
+    <!-- 동의 -->
+    <label class="consent">
+  <input type="checkbox" id="consent" required />
+
+  <div class="consent-wrap">
+    <div class="consent-main">
+      <b>[필수]</b> 개인정보 수집 및 이용에 동의합니다.
+      <em>상담 외 다른 목적으로 사용되지 않아요.</em>
+    </div>
+
+    <div class="consent-detail">
+      <ul>
+        <li><b>수집 목적</b> : 본인 확인, 도입 상담/문의, 제품소개 요청 처리</li>
+        <li><b>수집 항목</b> : 연락처 / 아파트 단지정보</li>
+        <li><b>수집 근거</b> : 정보 주체의 동의</li>
+        <li><b>보유 기간</b> : 상담 완료 시 즉시 파기</li>
+      </ul>
+    </div>
+  </div>
+</label>
+    <button type="submit" class="submit" id="submitBtn" disabled>컨설팅 신청하기</button>
+  </form>
+</section>
+
+<style>
+  :root{
+    --panel:#fff;
+    --text:#0f172a;
+    --muted:#64748b;
+    --line:#e6eaf2;
+    --brand:#2563eb;
+    --danger:#ef4444;
+    --radius:18px;
+    --shadow: 0 18px 60px rgba(15, 23, 42, 0.08);
+  }
+
+  .card{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 26px;
+  }
+
+  .cardTop h2{ margin:0; font-size:27px; letter-spacing:-0.3px; }
+  .cardTop p{ margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.5; }
+
+  .form{ margin-top: 14px; }
+  .field{ margin-top: 16px; }
+
+  .fieldHead{
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .label{
+    font-size: 20px;
+    color: var(--muted);
+    font-weight: 900;
+    letter-spacing: -0.1px;
+  }
+  .hint{
+    font-size: 17px;
+    color: #94a3b8;
+    font-weight: 700;
+    text-align: right;
+  }
+  .req{ color: var(--danger); }
+
+  input[type="tel"], textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius: 14px;
+    padding: 13px 14px;
+    outline: none;
+    font-size: 14px;
+    color: var(--text);
+    transition: .15s ease;
+    background:#fff;
+  }
+  textarea{ resize: vertical; min-height: 140px; }
+  input::placeholder, textarea::placeholder{ color:#94a3b8; }
+
+  input:focus, textarea:focus{
+    border-color: rgba(37,99,235,0.45);
+    box-shadow: 0 0 0 5px rgba(37,99,235,0.10);
+  }
+
+  .chipGroup{ display:flex; flex-wrap:wrap; gap:10px; }
+  .chipCheck{
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:10px 12px;
+    cursor:pointer;
+    user-select:none;
+    background:#fff;
+    transition:.15s ease;
+    font-weight:900;
+    color:#334155;
+    font-size:13px;
+  }
+  .chipCheck input{ width:16px; height:16px; accent-color: var(--brand); margin:0; }
+  .chipCheck:hover{ border-color:#cbd5e1; }
+  .chipCheck.active{
+    border-color: rgba(37,99,235,0.30);
+    background: rgba(37,99,235,0.10);
+    color:#1d4ed8;
+  }
+
+  .error{
+    min-height: 18px;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--danger);
+    font-weight: 800;
+  }
+  .invalid{
+    border-color: rgba(239,68,68,0.55) !important;
+    box-shadow: 0 0 0 5px rgba(239,68,68,0.08) !important;
+  }
+
+  .consent{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    margin-top:16px;
+    padding:12px 12px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:#fafcff;
+    font-size:12.5px;
+    color:#334155;
+    line-height:1.5;
+    font-weight:800;
+    cursor:pointer;
+    user-select:none;
+  }
+  .consent input{ margin-top:2px; width:18px; height:18px; accent-color: var(--brand); }
+  .consent em{ color: var(--muted); font-style: normal; font-weight: 700; }
+
+  .submit{
+    margin-top: 14px;
+    width:100%;
+    padding:14px 14px;
+    border-radius:14px;
+    border:0;
+    font-weight:950;
+    font-size:15px;
+    cursor:pointer;
+    background:#e2e8f0;
+    color:#64748b;
+    transition:.15s ease;
+  }
+  .submit.enabled{
+    background: var(--brand);
+    color:#fff;
+    box-shadow: 0 14px 30px rgba(37,99,235,0.25);
+  }
+  .submit.enabled:hover{ filter: brightness(0.98); transform: translateY(-1px); }
+</style>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+  //   const EMAILJS_PUBLIC_KEY = "jyrL0ikUigwhOgnSu";
+  const EMAILJS_SERVICE_ID = "service_7eg3e18";
+  const EMAILJS_TEMPLATE_ID = "template_wjlukpk";
+
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  const form = document.getElementById("leadLiteForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const consent = document.getElementById("consent");
+
+  const topicError = document.getElementById("topicError");
+  const contact = document.getElementById("contact");
+  const contactError = document.getElementById("contactError");
+
+  const chipLabels = Array.from(document.querySelectorAll(".chipCheck"));
+  const topicInputs = Array.from(document.querySelectorAll('input[name="topic"]'));
+
+  // 칩 active 스타일 토글
+  function syncChipActive(){
+    chipLabels.forEach(label => {
+      const input = label.querySelector("input");
+      label.classList.toggle("active", input.checked);
+    });
+  }
+  chipLabels.forEach(label => label.addEventListener("click", () => {
+    requestAnimationFrame(() => {
+      syncChipActive();
+      validateAndToggle();
+    });
+  }));
+
+  // 전화번호 유효성(너무 빡세지 않게)
+  function isPhoneLike(v){
+    const s = (v || "").trim();
+    if (!s) return false;
+    if (!/^[0-9\s\-()+]+$/.test(s)) return false;
+    const digits = s.replace(/\D/g, "");
+    return digits.length >= 9;
+  }
+
+  function validateTopics(){
+    const anyChecked = topicInputs.some(i => i.checked);
+    topicError.textContent = anyChecked ? "" : "문의 유형을 1개 이상 선택해 주세요.";
+    return anyChecked;
+  }
+
+  function validateContact(){
+    const ok = isPhoneLike(contact.value);
+    contact.classList.toggle("invalid", !ok && contact.value.trim().length > 0);
+    contactError.textContent = ok || contact.value.trim().length === 0 ? "" : "연락처 형식을 확인해 주세요.";
+    return ok;
+  }
+
+  function validateAndToggle(){
+    const topicsOk = validateTopics();
+    const contactOk = isPhoneLike(contact.value);
+    const consentOk = consent.checked;
+
+    const enabled = topicsOk && contactOk && consentOk;
+    submitBtn.disabled = !enabled;
+    submitBtn.classList.toggle("enabled", enabled);
+  }
+
+  form.addEventListener("input", () => {
+    validateContact();
+    validateAndToggle();
+  });
+  form.addEventListener("change", () => {
+    syncChipActive();
+    validateContact();
+    validateAndToggle();
+  });
+
+  // ✅ 제출 → EmailJS로 메일 전송
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const topicsOk = validateTopics();
+    const contactOk = validateContact();
+    const consentOk = consent.checked;
+
+    if (!topicsOk || !contactOk || !consentOk) {
+      validateAndToggle();
+      return;
+    }
+
+    const topics = topicInputs.filter(i => i.checked).map(i => i.value);
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    const templateParams = {
+      topics: topics.join(", "),
+      contact: (data.contact || "").trim(),
+      message: (data.message || "").trim() || "(미입력)"
+    };
+
+    const oldText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "전송 중…";
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+
+      alert("도입 문의가 접수되었습니다! 운영 전문 담당자가 영업일기준 1일이내 연락드릴게요 😊");
+      form.reset();
+      syncChipActive();
+      validateAndToggle();
+
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      const msg = err?.text || err?.message || JSON.stringify(err);
+      alert("전송 실패 😢\n" + msg);
+    } finally {
+      submitBtn.textContent = oldText;
+      validateAndToggle();
+    }
+  });
+
+  // init
+  syncChipActive();
+  validateAndToggle();
+</script>
