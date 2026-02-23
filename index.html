@@ -258,7 +258,7 @@
 
   function validateTopics(){
     const anyChecked = topicInputs.some(i => i.checked);
-    topicError.textContent = anyChecked ? "" : "문의 주제를 1개 이상 선택해 주세요.";
+    topicError.textContent = anyChecked ? "" : "문의 구분을 1개 이상 선택해 주세요.";
     return anyChecked;
   }
 
@@ -338,6 +338,7 @@
   validateAndToggle();
 
 </script>
+
 
 
 
