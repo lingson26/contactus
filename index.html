@@ -36,6 +36,8 @@
     <!-- 연락처 -->
     <div class="field">
       <div class="fieldHead">
+          <div class="error" id="topicError"></div>
+</div>
         <label class="label" for="contact">연락처 <span class="req">*</span></label>
         <div class="hint">연락 받으실 연락처를 입력해 주세요.</div>
       </div>
@@ -160,13 +162,12 @@
     color:#1d4ed8;
   }
 
-  .error{
-    min-height: 18px;
-    margin-top: 6px;
-    font-size: 12px;
-    color: var(--danger);
-    font-weight: 300;
-  }
+.error{
+  font-size:12px;
+  color: var(--danger);
+  font-weight:500;
+  min-height:auto;
+}
   .invalid{
     border-color: rgba(239,68,68,0.55) !important;
     box-shadow: 0 0 0 5px rgba(239,68,68,0.08) !important;
@@ -338,6 +339,7 @@
   validateAndToggle();
 
 </script>
+
 
 
 
